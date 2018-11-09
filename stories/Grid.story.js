@@ -1,6 +1,6 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import { ThemeProvider } from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 import { withInfo } from "@storybook/addon-info";
 import { merchantTheme } from "../src/theme";
 import { GridRow, GridColumn } from "../src/Grid";
@@ -14,6 +14,11 @@ const gridStyle = {
   textAlign: "center",
 };
 
+const Container = styled.div`
+  width: 1200px;
+  margin: 0 auto;
+`;
+
 storiesOf("Grid", module)
   .addDecorator(story => (
     <ThemeProvider theme={merchantTheme}>{story()}</ThemeProvider>
@@ -21,7 +26,7 @@ storiesOf("Grid", module)
   .add(
     "default",
     withInfo("Example of how to use grid")(() => (
-      <div>
+      <Container>
         <GridRow>
           <GridColumn lg={12}>
             <div style={gridStyle}>12 Columns, 1176px</div>
@@ -84,13 +89,13 @@ storiesOf("Grid", module)
             <div style={gridStyle}>4 Columns, 376px</div>
           </GridColumn>
         </GridRow>
-      </div>
+      </Container>
     )),
   )
   .add(
     "no gutter",
     withInfo("Example of how to use grid")(() => (
-      <div>
+      <Container>
         <GridRow>
           <GridColumn lg={12} disableGutter={true}>
             <div style={gridStyle}>12 Columns, 1176px</div>
@@ -153,6 +158,6 @@ storiesOf("Grid", module)
             <div style={gridStyle}>4 Columns, 376px</div>
           </GridColumn>
         </GridRow>
-      </div>
+      </Container>
     )),
   );
